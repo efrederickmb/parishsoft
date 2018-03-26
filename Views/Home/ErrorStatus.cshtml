@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Error Status Page";
+    Layout = "/Views/Shared/_LayoutAnonymous.cshtml";
+}
+<div class="container">
+    <div class="col-md-4 col-sm-6 ml-auto mr-auto">
+        <div class="card card-login">
+          <div class="card-header card-header-danger text-center">
+              <img src="/images/ps-logo-white.png" class="img-fluid pl-5 pr-5" />
+              <h4 class="card-title">Error</h4>
+          </div>
+          <div class="card-body text-center">
+            Something went wrong. The server error status code returned was <h3 class="strong">@ViewData["StatusCode"]</h3>
+          </div>
+            <div class="card-footer justify-content-center">
+                @if(!User.Identity.IsAuthenticated) 
+                {
+                    <a href="~/Account/Login" class="btn btn-info btn-link btn-lg">Return to login page</a>
+                }
+                else
+                {
+                    <a href="/Home/Index" class="btn btn-info btn-link btn-lg">Return to home page</a>
+                }
+          </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

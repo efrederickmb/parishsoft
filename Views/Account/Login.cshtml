@@ -1,0 +1,64 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@model LoginViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "/Views/Shared/_LayoutAnonymous.cshtml";
+}
+
+<div class="container">
+    <div class="col-md-4 col-sm-6 ml-auto mr-auto">
+        <section>
+            <form id="loginForm" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+            <div class="card card-login">
+              <div class="card-header card-header-info text-center">
+                  <img src="/images/ps-logo-white.png" class="img-fluid pl-5 pr-5" />
+                  <h4 class="card-title">Log in</h4>
+              </div>
+              <div class="card-body ">
+                <!--<div asp-validation-summary="All" class="text-danger"></div>-->
+                <div class="form-group">
+                    <input placeholder="Email" asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    
+                    <input placeholder="Password" asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="RememberMe">
+                            <input asp-for="RememberMe" />
+                            @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <!--<div class="form-group">
+                    <button type="submit" class="btn btn-default">Log in</button>
+                </div>-->
+                <div class="form-group">
+                    <p>
+                        <a asp-action="ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <!--<p>
+                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
+                    </p>-->
+                </div>
+              </div>
+              <div class="card-footer justify-content-center">
+                <a href="javascript:document.getElementById('loginForm').submit();" class="btn btn-info btn-link btn-lg">Lets Go</a>
+              </div>
+            </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
