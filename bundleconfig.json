@@ -2,23 +2,50 @@
 // More info at https://go.microsoft.com/fwlink/?LinkId=808241
 [
   {
-    "outputFileName": "wwwroot/css/site.min.css",
+    "outputFileName": "wwwroot/assets/css/site.min.css",
     // An array of relative input file paths. Globbing patterns supported
     "inputFiles": [
       "wwwroot/css/site.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/site.min.js",
+    "outputFileName": "wwwroot/assets/js/core/single.min.js",
     "inputFiles": [
-      "wwwroot/js/site.js"
+      "wwwroot/assets/js/core/jquery.min.js",
+      "wwwroot/assets/js/core/popper.min.js",
+      "wwwroot/assets/js/plugins/moment.min.js",
+      "wwwroot/assets/js/plugins/arrive.min.js",
+      "wwwroot/assets/js/plugins/jquery.validate.min.js",
+      "wwwroot/assets/js/plugins/chartist.min.js",
+      "wwwroot/assets/js/plugins/jasny-bootstrap.min.js",
+      "wwwroot/assets/js/plugins/nouislider.min.js",
+      "wwwroot/assets/js/plugins/fullcalendar.min.js",
+      "wwwroot/assets/js/plugins/bootstrap-datetimepicker.min.js"
     ],
-    // Optionally specify minification options
+    "minify": {
+      "enabled":  false,
+      "renameLocals": false
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/assets/js/release.min.js",
+    "inputFiles": [
+      "wwwroot/assets/js/plugins/bootstrap-selectpicker.js",
+      "wwwroot/assets/js/plugins/bootstrap-tagsinput.js",
+      "wwwroot/assets/js/plugins/jquery.bootstrap-wizard.js",
+      "wwwroot/assets/js/plugins/bootstrap-notify.js",
+      "wwwroot/assets/js/plugins/jquery-jvectormap.js",
+      "wwwroot/assets/js/plugins/jquery.select-bootstrap.js",
+      "wwwroot/assets/js/plugins/jquery.datatables.js",
+      "wwwroot/assets/js/plugins/sweetalert2.js",
+      "wwwroot/assets/js/material-dashboard.js?v=2.0.1"
+    ],
     "minify": {
       "enabled": true,
       "renameLocals": true
     },
-    // Optionally generate .map file
     "sourceMap": false
   }
+
 ]

@@ -14,9 +14,13 @@ using ParishSoft.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
+using Microsoft.AspNetCore.Http;
 
 namespace ParishSoft
 {
+ 
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -31,6 +35,7 @@ namespace ParishSoft
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => {
                 options.Password.RequireDigit = true;
@@ -89,13 +94,14 @@ namespace ParishSoft
 
             app.UseAuthentication();
 
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+ 
         }
     }
 }
